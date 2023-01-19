@@ -33,7 +33,7 @@ CREATE TABLE if NOT EXISTS track (
                edition_id BIGINT NOT NULL,
                track_number INT NOT NULL,
                title VARCHAR(100) NOT NULL,
-               duration INT NOT NULL,
+               duration_in_seconds INT NOT NULL,
                PRIMARY KEY (id),
                FOREIGN KEY (edition_id) REFERENCES edition (id) ON DELETE CASCADE
 );

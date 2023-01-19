@@ -24,8 +24,8 @@ public class Track {
     @NotBlank
     @Min(value = 1)
     @Max(value = 9999)
-    private int duration;
-    @ManyToOne(cascade = CascadeType.ALL)
+    private int durationInSeconds;
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Edition edition;
 
 }

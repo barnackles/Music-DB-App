@@ -7,6 +7,8 @@ import lombok.Data;
 import org.hibernate.validator.constraints.Length;
 
 import java.time.LocalDate;
+import java.util.HashSet;
+import java.util.List;
 
 @Entity
 @Data
@@ -21,5 +23,6 @@ public class Album {
     private LocalDate releaseDate;
     @ManyToOne(cascade = CascadeType.ALL)
     private Performer performer;
+
 
 }

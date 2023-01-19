@@ -15,6 +15,6 @@ public class Edition {
     @Length(max = 100)
     @NotBlank
     private String description;
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Album album;
 }
