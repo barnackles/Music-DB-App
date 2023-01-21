@@ -31,9 +31,11 @@ CREATE TABLE if NOT EXISTS edition (
 CREATE TABLE if NOT EXISTS track (
                id BIGINT NOT NULL AUTO_INCREMENT,
                edition_id BIGINT NOT NULL,
+               album_id BIGINT NOT NULL,
                track_number INT NOT NULL,
                title VARCHAR(100) NOT NULL,
                duration_in_seconds INT NOT NULL,
                PRIMARY KEY (id),
-               FOREIGN KEY (edition_id) REFERENCES edition (id) ON DELETE CASCADE
+               FOREIGN KEY (edition_id) REFERENCES edition (id) ON DELETE CASCADE,
+               FOREIGN KEY (album_id) REFERENCES album (id) ON DELETE CASCADE
 );
