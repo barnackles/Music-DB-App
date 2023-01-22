@@ -27,5 +27,7 @@ public class Track {
     private int durationInSeconds;
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Edition edition;
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private Album album;
 
 }

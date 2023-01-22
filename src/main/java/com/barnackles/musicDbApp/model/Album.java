@@ -23,6 +23,8 @@ public class Album {
     private LocalDate releaseDate;
     @ManyToOne(cascade = CascadeType.ALL)
     private Performer performer;
+    @ManyToOne(cascade = CascadeType.ALL)
+    private Edition edition;
 
 
 }

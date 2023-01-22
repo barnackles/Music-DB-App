@@ -18,6 +18,10 @@ public class DurationCalculator {
         return getDurationInMinsAndSecs(editionDurationInSeconds);
     }
 
+    public String calculateTrackDuration(int durationInSeconds) {
+        return getDurationInMinsAndSecs(durationInSeconds);
+    }
+
     public String getDurationInMinsAndSecs(int durationInSeconds) {
 
         int sec = durationInSeconds % 60;
