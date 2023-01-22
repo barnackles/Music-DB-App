@@ -18,7 +18,6 @@ import java.util.List;
 public class EditionService {
 
     private final EditionRepository editionRepository;
-    private final TrackRepository trackRepository;
 
     private final DurationCalculator durationCalculator;
 
@@ -29,21 +28,29 @@ public class EditionService {
                 .map(this::convertEditionToEditionDto)
                 .toList();
 
-
         return listOfEditionDtos;
     }
 
+    public List<EditionDto> findAllEditionsByAlbumIdInitializeAllAssociastions(Long albumId) {
+        List<Edition> listOfEditions = editionRepository.findEditionsByAlbumIdInitializeAllAssociations(albumId);
+        List<EditionDto> listOfEditionDtos = listOfEditions.stream()
+                .map(this::convertEditionToEditionDto)
+                .toList();
+
+        return listOfEditionDtos;
+    }
 
     private EditionDto convertEditionToEditionDto(Edition edition) {
 
         EditionDto editionDto = new EditionDto();
         editionDto.setDescription(edition.getDescription());
 
-
-        editionDto.setDuration(durationCalculator.calculateEditionDuration(trackRepository.findTracksByEditionId(edition.getId())));
+        editionDto.setDuration(durationCalculator.calculateEditionDuration(edition.getTracks()));
 
         return editionDto;
     }
+
+
 
 
 

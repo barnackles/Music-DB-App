@@ -12,7 +12,6 @@ CREATE TABLE if NOT EXISTS performer (
 CREATE TABLE if NOT EXISTS album (
                 id BIGINT NOT NULL AUTO_INCREMENT,
                 performer_id BIGINT NOT NULL,
-                edition_id BIGINT NOT NULL,
                  title VARCHAR(100) NOT NULL,
                  release_date DATE NOT NULL,
                  PRIMARY KEY (id),

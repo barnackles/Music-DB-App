@@ -36,13 +36,6 @@ public class MusicAppController {
 
     }
 
-//    @GetMapping("/tracklist/{editionId}")
-//    public ResponseEntity<List<Track>> getAllAlbums(@PathVariable Long editionId) {
-//
-//        return new ResponseEntity<>(trackService.findAllTracksForAlbumEdition(editionId), HttpStatus.OK);
-//
-//    }
-
     @GetMapping("/tracklist/{albumTitle}/{editionDescription}")
     public ResponseEntity<List<TrackDto>> getEditionTrackList(@PathVariable String albumTitle,
                                                               @PathVariable String editionDescription) {

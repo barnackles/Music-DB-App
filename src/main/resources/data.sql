@@ -3,8 +3,8 @@ INSERT INTO performer (professional_name, first_name, middle_name, last_name)
 VALUES ('Kimbra', 'Kimbra', 'Lee', 'Johnson');
 
 
-INSERT INTO album (performer_id, edition_id, title, release_date)
-VALUES (1, 1, 'Vows', '2011-08-29');
+INSERT INTO album (performer_id, title, release_date)
+VALUES (1, 'Vows', '2011-08-29');
 
 
 INSERT INTO edition (album_id, description)
