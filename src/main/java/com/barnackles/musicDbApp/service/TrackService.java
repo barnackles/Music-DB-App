@@ -22,23 +22,16 @@ import java.util.List;
 
 public class TrackService {
 
-    private final TrackRepository trackRepository;
     private final EditionRepository editionRepository;
     private final DurationCalculator durationCalculator;
 
-    public List<Track> findAllTracksForAlbumEditionById(Long editionId) {
-        return trackRepository.findTracksByEditionId(editionId);
-    }
 
     public List<TrackDto> findAllTracksForAlbumEdition(String albumTitle, String editionDescription) {
-//       List<Track> trackList = trackRepository.findTracksByAlbumTitleAndEditionDescriptionStartsWith(albumTitle, editionDescription);
-
         Edition persistedEdition = editionRepository.findEditionByAlbumTitleAndEditionDescriptionStartsWithInitializeTracks(albumTitle, editionDescription)
                 .orElseThrow(() -> {
                     log.error("Edition with album title: {} and description starting with {} not found", albumTitle, editionDescription);
                     throw new EntityNotFoundException("Edition not found");
                 });
-
 
         List<Track> trackList = persistedEdition.getTracks();
 
@@ -53,9 +46,7 @@ public class TrackService {
         TrackDto trackDto = new TrackDto();
         trackDto.setTrackNumber(track.getTrackNumber());
         trackDto.setTrackTitle(track.getTitle());
-//        trackDto.setAlbumTitle(track.getAlbum().getTitle());
         trackDto.setAlbumTitle(albumTitle);
-//        trackDto.setEdition(track.getEdition().getDescription());
         trackDto.setEdition(editionDescription);
         trackDto.setDuration(durationCalculator.calculateTrackDuration(track.getDurationInSeconds()));
 
