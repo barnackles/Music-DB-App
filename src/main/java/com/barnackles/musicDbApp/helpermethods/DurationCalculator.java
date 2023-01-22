@@ -9,6 +9,8 @@ import java.util.List;
 public class DurationCalculator {
 
 
+    public static final int SIXTY_SECONDS = 60;
+
     public String calculateEditionDuration(List<Track> editionTracklist) {
 
         int editionDurationInSeconds = editionTracklist.stream()
@@ -24,8 +26,8 @@ public class DurationCalculator {
 
     public String getDurationInMinsAndSecs(int durationInSeconds) {
 
-        int sec = durationInSeconds % 60;
-        int min = durationInSeconds / 60;
+        int sec = durationInSeconds % SIXTY_SECONDS;
+        int min = durationInSeconds / SIXTY_SECONDS;
 
         return String.format("%d min %d sec", min, sec);
     }

@@ -16,17 +16,24 @@ public class AlbumService {
     private final AlbumRepository albumRepository;
     private final EditionService editionService;
 
+    /**
+     * @return List<TrackDto>
+     * Returns list of album Dtos with initialized associations.
+     */
     public List<AlbumDto> findAll() {
 
         List<Album> albumsList = albumRepository.findAllAlbumsInitializeAllAssociations();
 
-        List<AlbumDto> albumsDtoList = albumsList.stream()
+        return albumsList.stream()
                 .map(this::convertAlbumToAlbumDto)
                 .toList();
-
-        return albumsDtoList;
     }
 
+    /**
+     * @param album - album
+     * @return AlbumDto
+     * Converts album to album data transfer object.
+     */
 
     private AlbumDto convertAlbumToAlbumDto(Album album) {
 
