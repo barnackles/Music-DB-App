@@ -16,7 +16,6 @@ import java.util.List;
 public class EditionService {
 
     private final EditionRepository editionRepository;
-
     private final DurationCalculator durationCalculator;
 
 
