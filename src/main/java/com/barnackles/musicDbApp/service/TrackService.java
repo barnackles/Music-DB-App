@@ -30,7 +30,7 @@ public class TrackService {
         Edition persistedEdition = editionRepository.findEditionByAlbumTitleAndEditionDescriptionStartsWithInitializeTracks(albumTitle, editionDescription)
                 .orElseThrow(() -> {
                     log.error("Edition with album title: {} and description starting with {} not found", albumTitle, editionDescription);
-                    throw new EntityNotFoundException("Edition not found");
+                    throw new EntityNotFoundException();
                 });
 
         List<Track> trackList = persistedEdition.getTracks();
