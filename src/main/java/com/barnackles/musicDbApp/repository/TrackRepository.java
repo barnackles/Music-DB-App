@@ -12,6 +12,5 @@ import java.util.List;
 public interface TrackRepository extends JpaRepository<Track, Long> {
 
     List<Track> findTracksByEditionId(Long editionId);
-    List<Track> findTracksByAlbumTitleAndEditionDescriptionStartsWith(String albumTitle, String editionDescription);
 
 }

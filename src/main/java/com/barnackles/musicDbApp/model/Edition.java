@@ -5,6 +5,8 @@ import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
 import org.hibernate.validator.constraints.Length;
 
+import java.util.List;
+
 @Entity
 @Data
 public class Edition {
@@ -17,4 +19,6 @@ public class Edition {
     private String description;
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Album album;
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "edition")
+    private List<Track> tracks;
 }

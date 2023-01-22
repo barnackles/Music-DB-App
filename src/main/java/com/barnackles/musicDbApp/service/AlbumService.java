@@ -18,7 +18,7 @@ public class AlbumService {
 
     public List<AlbumDto> findAll() {
 
-        List<Album> albumsList = albumRepository.findAll();
+        List<Album> albumsList = albumRepository.findAllAlbumsInitializeAllAssociations();
 
         List<AlbumDto> albumsDtoList = albumsList.stream()
                 .map(this::convertAlbumToAlbumDto)
@@ -34,7 +34,7 @@ public class AlbumService {
         albumDto.setPerformer(album.getPerformer().getProfessionalName());
         albumDto.setTitle(album.getTitle());
         albumDto.setReleaseDate(album.getReleaseDate());
-        albumDto.setAlbumEditions(editionService.findAllEditionsByAlbumId(album.getId()));
+        albumDto.setAlbumEditions(editionService.findAllEditionsByAlbumIdInitializeAllAssociations(album.getId()));
 
         return albumDto;
     }
